@@ -437,7 +437,8 @@ p.date {
     margin: 0;
     padding: 0;
     list-style-type: none;
-    width: 820px;
+    width: 750px;
+    background-color: #f2f2f2;
 }
 .info-card {
     margin-bottom: 8px;

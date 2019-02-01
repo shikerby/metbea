@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>metmsg: 信息广场</title>
+    <link REL="SHORTCUT ICON" HREF="{% static "favicon.ico" %}"/>
     <link rel="stylesheet" href="/static/css/common.css">
     <link rel="stylesheet" href="/static/css/home.css">
 </head>
@@ -16,7 +17,7 @@
             <!-- 板块导航 -->
             <div class="headup clearfix">
                 <div class="logo fl">
-                    <a href="index.html">MetBea</a>
+                    <a href="{% url 'login' %}">MetBea</a>
                 </div>
                 <nav>
                     <a href="testjs.html">探索中心</a>
@@ -143,7 +144,7 @@
                     </ul>
                 </div>
                 <!-- 未来信息的通知中心及其它 -->
-                <aside class="notice fr">
+                <aside class="note fr">
                     
                 </aside>
             </section>
@@ -174,7 +175,7 @@
                     </ul>
                 </div>
                 <!-- 未来信息的通知中心及其它 -->
-                <aside class="notice fr">
+                <aside class="note fr">
                     
                 </aside>
             </section>
@@ -205,7 +206,7 @@
                     </ul>
                 </div>
                 <!-- 未来信息的通知中心及其它 -->
-                <aside class="notice fr">
+                <aside class="note fr">
                     
                 </aside>
             </section>
@@ -235,7 +236,7 @@
                     </ul>
                 </div>
                 <!-- 未来信息的通知中心及其它 -->
-                <aside class="notice fr">
+                <aside class="note fr">
     
                 </aside>
             </section>
