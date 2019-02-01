@@ -12,7 +12,7 @@ from blog.models import Post
 def home(request):
     # 在对象筛选器中过滤查询集, 筛选出在一天之内发布的信息
     # 在home页的综合排序选项中筛选出一周内 综合评分在8分以上的信息,按时间先后排序
-    lasted_posts = Post.published.all()[:10]
+    lasted_posts = Post.published.all()[:15]
     return render(request, 'account/home.html', {'lasted_posts': lasted_posts})
     
 
@@ -68,6 +68,7 @@ def register(request):
 class MyLoginView(LoginView):
     form_class = MyAuthForm
     template_name = 'account/index.html'
+    redirect_authenticated_user = 'home'
 
 
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from taggit.models import Tag
 from django.db.models import Count
 
@@ -36,6 +36,7 @@ def post_detail(request, year, month, day, slug):
             new_comment.post = post
             new_comment.name = request.user
             new_comment.save()
+            return redirect(post.get_absolute_url())
     else:
         comment_form = CommentForm()
     return render(request, 'blog/detail.html', {'post': post, 

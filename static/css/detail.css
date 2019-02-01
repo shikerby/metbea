@@ -54,3 +54,20 @@ aside{
     border-radius: 2px;
     border-left: 4px solid #66cc99;
 }
+.comment-form p>textarea{
+    width: 700px;
+    height: 180px;
+}
+
+.comment-form input[type="submit"]{
+    background-color: #66cc99;
+    color: #fff;
+    width: 170px;
+    height: 40px;
+    box-shadow: 1px 3px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 2px;
+    border: none;
+}
+.comment-form input[type="submit"]:hover{
+    box-shadow: 2px 6px 4px rgba(0,0,0,.3);
+}

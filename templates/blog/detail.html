@@ -50,7 +50,7 @@
         {% if new_comment %}
             <h2>Your comment has been added.</h2>
         {% else %}
-            <form action='.' method='post'>
+            <form action='.' method='post' class="comment-form">
                 {{ comment_form.as_p }}
                 {% csrf_token %}
                 <p><input type='submit' value='我的评论'></p>
