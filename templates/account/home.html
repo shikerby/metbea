@@ -1,0 +1,251 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>metmsg: 信息广场</title>
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <!-- 板块导航 -->
+            <div class="headup clearfix">
+                <div class="logo fl">
+                    <a href="index.html">MetBea</a>
+                </div>
+                <nav>
+                    <a href="testjs.html">探索中心</a>
+                    <a href="testjs.html">创建组织</a>
+                    <a href="testjs.html">可编程TV</a>
+                </nav>
+                
+                <div class="search-box">
+                    <div class="searchwrap">
+                        <input type="text" placeholder="双击 Shift 启用搜索">
+                        <a href="#"><img src="/static/icons/search.png" alt="搜索"></a>
+                    </div>
+                </div>
+
+                <div class="login-wrap fr">
+                    <div class="logined">
+                        <a href="{% url 'edit' %}">Hi: {{ request.user.username }}</a>
+                        <div class="dropdown-content">
+                            <a href="home.html">个人空间</a>
+                            <a href="{% url 'writing' %}">创作与发布</a>
+                            <a href="{% url 'logout' %}">退出</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 搜索导航 -->
+            <!-- 频道导航 -->
+            <div class="headdown">
+                <a href="channel.html">明星八卦.电视电影</a>
+                <a href="channel.html">电竞及游戏</a>
+                <a href="channel.html">科技及人文</a>
+                <a href="channel.html">设计、美、生活</a>
+                <a href="channel.html">你我的大学、社团</a>
+            </div>
+        </header>
+        <!-- 页面主体内容 -->
+        <main>
+            <!-- 内容导航 -->
+            <div class="sidebar">
+                <ul class="infonav">
+                    <!-- <li><span></span><a href="#">NEWS</a></li> -->
+                    <li><a class="active" href="javascript:void(0)"><img src="/static/icons/info.png" alt="info"> 最新信息</a></li>
+                    <li><a href="javascript:void(0)"><img src="/static/icons/club.png" alt="mytv"> 专题频道</a></li>
+                    <li><a href="javascript:void(0)"><img src="/static/icons/community.png" alt="comm"> 线下活动</a></li>
+                    <!-- <li><a href="#"><img src="/static/icons/manga.png" alt="mytv">&nbsp;漫画&动画</a></li> -->
+                    <li><a href="javascript:void(0)"><img src="/static/icons/berries.png" alt="mytv"> MineTV</a></li>
+                </ul>
+                <a class="authoring-publishing" href="{% url 'writing' %}"> 创作与发布 </a>
+            </div>
+            <!-- 自定义发布的信息广场 -->
+            <section class='sec-newpub clearfix' name='sec1'>
+                <div class="content fl">
+                    <!-- <div class="perfectRect9-1">
+                        <div class="square1"></div>
+                        <div class="square4"></div>
+                        <div class="square7"></div>
+                        <div class="square8"></div>
+                        <div class="square9"></div>
+                        <div class="square10"></div>
+                        <div class="square14"></div>
+                        <div class="square15"></div>
+                        <div class="square18"></div>
+                        <div class="rect90640"></div>
+                    </div> -->
+                    <div class="perfectRect10">
+    
+                    </div>
+                    <div class="perfectSquare21">
+    
+                    </div>
+                    <div class="headline">
+                        <ul class="c-show-img clearfix">
+                            <li><a href="detail.html"><img src="images/1.gif" alt="1"></a></li>
+                            <li><a href="detail.html"><img src="images/2.gif" alt="2"></a></li>
+                            <li><a href="detail.html"><img src="images/3.gif" alt="3"></a></li>
+                            <li><a href="detail.html"><img src="images/4.gif" alt="4"></a></li>
+                            <li><a href="detail.html"><img src="images/5.gif" alt="5"></a></li>
+                            <!-- <li><a href="detail.html"><img src="images/6.gif" alt="6"></a></li> -->
+                        </ul>
+                        <ul class="c-list">
+                            {% for post in lasted_posts %}
+                                <li>
+                                    <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                                </li>
+                            {% endfor %}
+                            <li>
+                                <a href="detail.html">互联网公司扎堆上市、五环外竞技走红</a>
+                            </li>
+                            <li>
+                                <a href="detail.html">关于权健欺诈的集体诉讼</a>
+                            </li>
+                            <li>
+                                <a href="detail.html">艾伦.马斯克的boring公司初体验</a>
+                            </li>
+                            <li>
+                                <a href="detail.html">复仇者联盟4预告片、钢铁侠的救援</a>
+                            </li>
+                            <li>
+                                <a href="detail.html">曼联换帅如换刀、索尔斯克亚的名帅之路</a>
+                            </li>
+                            <li>
+                                <a href="detail.html">写在前面--中美贸易战的未来走向</a>
+                            </li>
+                            <li>
+                                <a href="detail.html">Linus发布 Linux 4.20版本</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <ul class="orderheadline">
+                        <li class="info-card">
+                            <a href="#">
+                                <img src="/static/images/ted2.gif" alt="ted">
+                                <div class="about">
+                                    <span class="card-title">智能推荐系统的所形成的信息茧房</span><br>
+                                    <span>关于我们所要获取的的信息，应该由谁来决定，或者说不应该由谁来决定，更不应该由机器来决定</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                    </ul>
+                </div>
+                <!-- 未来信息的通知中心及其它 -->
+                <aside class="notice fr">
+                    
+                </aside>
+            </section>
+            <hr>
+            <!-- 第二段落 Conn me -->
+            <section class='sec-connme clearfix' name='sec2'>
+                <div class="content fl">
+                    <div class="headline">
+                        <ul class="c-show-img clearfix">
+                            <li><a href="detail.html"><img src="images/1.gif" alt="1"></a></li>
+                            <li><a href="detail.html"><img src="images/2.gif" alt="2"></a></li>
+                            <li><a href="detail.html"><img src="images/3.gif" alt="3"></a></li>
+                            <li><a href="detail.html"><img src="images/4.gif" alt="4"></a></li>
+                            <li><a href="detail.html"><img src="images/5.gif" alt="5"></a></li>
+                            <!-- <li><a href="detail.html"><img src="images/6.gif" alt="6"></a></li> -->
+                        </ul>
+                        <div class="c-show-info">
+                            hello, 这是上面的图片的文字信息描述
+                        </div>
+                    </div>
+                    <ul class="orderheadline">
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                    </ul>
+                </div>
+                <!-- 未来信息的通知中心及其它 -->
+                <aside class="notice fr">
+                    
+                </aside>
+            </section>
+            <hr>
+            <!-- 第三段落 sec e-play club -->
+            <section class='sec-eclub clearfix' name='sec3'>
+                <div class="content fl">
+                    <div class="headline">
+                        <ul class="c-show-img clearfix">
+                            <li><a href="detail.html"><img src="images/1.gif" alt="1"></a></li>
+                            <li><a href="detail.html"><img src="images/2.gif" alt="2"></a></li>
+                            <li><a href="detail.html"><img src="images/3.gif" alt="3"></a></li>
+                            <li><a href="detail.html"><img src="images/4.gif" alt="4"></a></li>
+                            <li><a href="detail.html"><img src="images/5.gif" alt="5"></a></li>
+                            <!-- <li><a href="detail.html"><img src="images/6.gif" alt="6"></a></li> -->
+                        </ul>
+                        <div class="c-show-info">
+                            hello, 这是上面的图片的文字信息描述
+                        </div>
+                    </div>
+                    <ul class="orderheadline">
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                    </ul>
+                </div>
+                <!-- 未来信息的通知中心及其它 -->
+                <aside class="notice fr">
+                    
+                </aside>
+            </section>
+            <hr>
+            <!-- 第四段落 自定义TV -->
+            <section class='sec-customTV clearfix' name='sec4'>
+                <div class="content fl">
+                    <div class="headline">
+                        <ul class="c-show-img clearfix">
+                            <li><a href="detail.html"><img src="images/1.gif" alt="1"></a></li>
+                            <li><a href="detail.html"><img src="images/2.gif" alt="2"></a></li>
+                            <li><a href="detail.html"><img src="images/3.gif" alt="3"></a></li>
+                            <li><a href="detail.html"><img src="images/4.gif" alt="4"></a></li>
+                            <li><a href="detail.html"><img src="images/5.gif" alt="5"></a></li>
+                            <!-- <li><a href="detail.html"><img src="images/6.gif" alt="6"></a></li> -->
+                        </ul>
+                        <div class="c-show-info">
+                            hello, 这是上面的图片的文字信息描述
+                        </div>
+                    </div>
+                    <ul class="orderheadline">
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                        <li class="info-card">1</li>
+                    </ul>
+                </div>
+                <!-- 未来信息的通知中心及其它 -->
+                <aside class="notice fr">
+    
+                </aside>
+            </section>
+        </main>
+        <!-- 页面底部通用内容 -->
+        <footer>
+            页面通用底部
+        </footer>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+main{
+    margin: 120px auto;
+    width: 100%;
+    position: relative;
+}
+
+aside{
+    position: fixed;
+    width: 320px;
+    top: 120px;
+    margin-left: 840px;
+    padding: 20px;
+    border-radius: 2px;
+    box-shadow: -1px 2px 2px rgba(0, 0, 0, 0.12), 1px 2px 2px rgba(0, 0, 0, 0.24);
+}
+
+.contentbox{
+    width: 700px;
+    padding: 30px 60px;
+    border-radius: 2px;
+    box-shadow: -1px 2px 2px rgba(0, 0, 0, 0.12), 1px 2px 2px rgba(0, 0, 0, 0.24);
+}
+
+.album-nav,
+.author-info{
+    width: 100%;
+    background-color: #f2f2f2;
+}
+.author-info a{
+    display: block;
+    width: 200px;
+    padding: 10px 30px 10px 90px;
+    height: 60px;
+    line-height: 30px;
+    position: relative;
+}
+.author-info a img{
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 60px;
+    height: 60px
+}
+.article-dir{
+    background-color: #f2f2f2;
+}
+.article-dir li{
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.article-dir li:hover{
+    background-color: #fff;
+    border-radius: 2px;
+    border-left: 4px solid #66cc99;
+}

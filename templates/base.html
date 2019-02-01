@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        {% block title %}
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="{% static 'css/other.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- 通用头部 -->
+        <header>
+            <div class="com-header clearfix">
+                <div class="logo fl">
+                    <a href="{% url 'login' %}">MetBea</a>
+                </div>
+                <ul class="current-page">
+                    {% if section == "register" %}
+                        <li>注册用户</li>
+                    {% endif %}
+                    {% if section == "changepw" %}
+                        <li>修改密码</li>
+                    {% endif %}
+                    {% if section == "retrieve" %}
+                        <li>重置密码</li>
+                    {% endif %}
+                    {% if section == "editprofile" %}
+                        <li>更新个人资料</li>
+                    {% endif %}
+                    <li>有朋自远方来，不亦乐乎！</li>
+                </ul>
+                
+            </div>
+        </header>
+        <main>
+            {% block content %}
+
+            {% endblock content %}
+        </main>
+        <div class="notice">
+            note: 本网站不收集信息,不打广告. 如果你想发信息上首页,可以自己定制时间. 频率别太高, 每周有一次, 没有人想天天看同一个人发的信息吧  
+        </div>
+
+    </div>
+</body>
+</html>

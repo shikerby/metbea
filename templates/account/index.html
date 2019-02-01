@@ -1,0 +1,76 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MetMsG:一个价值观引导的信息聚焦网站</title>
+    <link rel="stylesheet" href="/static/css/common.css">
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+    <div class="container">
+        <div class="slogan fl">
+            <div class="header"></div>
+            <div class="midbox">
+                <div class="inner">
+                    <h1>MetBea</h1>
+                    <br>
+                    <p>
+                        Metbea is a info-social sites that can be customized to publish information.
+                    </p>
+                    <p>How happy we are , to meet friends from afar.</p>
+                    <p>有朋自远方来，不亦乐乎！</p>
+                </div>
+            </div>
+            <div class="footer">
+                <small>CopyRight 2018 &COPY; <a href="mailto:shikerby@outlook.com">唐金鹏</a></small>
+            </div>
+        </div>
+        <div class="login fl">
+            <div class="form-box">
+                <form action='.' method='post'>
+                    {% for field in form %}
+                        <div class="form-group">
+                            {{ field.errors }}
+                            {{ field.label }}{{ field }}
+                            {% if field.help_text %}<p class="help">{{ field.help_text|safe }}</p>{% endif %}
+                        </div>
+                    {% endfor %}
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value={{ next }}>
+                    <input type="submit" value="Log in">
+                </form>
+                <div class="hint">
+                    {% if form.errors %}
+                        <p>Your username and password didn't match.Please try again.</p>
+                    {% endif %}
+                </div>
+
+                    {% comment %} <div class="form-group">
+                        <label for="exampleInputEmail1">登录用户名：</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Account">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">请输入密码：</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <button type="submit" class="form-submit">Log in</button>
+                    <div class="form-group">
+                        <p class="error-msg"></p>
+                    </div> {% endcomment %}
+                    
+                <div class="form-footer">
+                    {% comment %} <a href="infoplaza.html">随便看看</a><br> {% endcomment %}
+                    <a href="{% url 'register' %}">注册用户</a><br>
+                    <small>如果忘记了用户名或密码: </small><a href="#">在此找回</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/common.js"></script>
+</body>
+</html>

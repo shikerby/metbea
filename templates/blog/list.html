@@ -1,0 +1,21 @@
+{% extends 'basepost.html' %}
+
+{% block title %}
+    文章标记--{{ tag }}
+{% endblock title %}
+
+{% block content %}
+    <ul class="orderheadline">
+        {% for post in object_list %}
+            <li class="info-card">
+                <a href="{{ post.get_absolute_url }}">
+                    <img src="/static/images/ted2.gif" alt="ted">
+                    <div class="about">
+                        <span class="card-title">{{ post.title }}</span><br>
+                        <span>{{ post.body|truncatechars:30 }}</span>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

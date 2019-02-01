@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}更新你的个人资料{% endblock %}
+
+{% block content %}
+    <div class="form-wrap">
+        <form action="." method="post" enctype="multipart/form-data">
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            {% csrf_token %}
+            <input type='submit' value='保存更新'>
+        </form>
+    </div>
+{% endblock %}

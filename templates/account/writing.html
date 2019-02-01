@@ -1,0 +1,36 @@
+{% extends 'basepost.html' %}
+
+{% block title %}
+    写文章
+{% endblock title %}
+
+{% block csslink %}
+    <link rel="stylesheet" href="/static/css/writing.css">
+{% endblock csslink %}
+
+
+{% block content %}
+    <button class="btn-write-post">我要写文章</button>
+    <!-- 这里的内容是为了给写文章的用户看的，约定及用户规则 -->
+    <div class="base-rule">
+        <ul>
+            <li>您所写的文章，可自定义时间发布在首页轮播图上</li>
+            <li>目前文章的发布规则是，您每月有一次自定义发布文章到首页的机会</li>
+        </ul>
+    </div>
+    <div class="editbox">
+        <div class="editor">
+            <div class="notice"><span>NOTICE: </span><span>完成你的内容后,务必自定义上首页时间</span></div>
+            <form action="." method="post">
+                {{ write_form.as_p }}
+                {% csrf_token %}
+                <input type="submit" value="发布发布文章文章">
+            </form>
+            {% comment %} <form action="." name="write-post">
+                <input type="text" placeholder="请在此处写标题">
+                <textarea id='post' name='post' cols="30" rows="10" placeholder="支持 markdown 语法写文章"></textarea>
+            </form> {% endcomment %}
+        </div>
+    </div>
+    <script src="/static/js/writing.js"></script>
+{% endblock content %}
