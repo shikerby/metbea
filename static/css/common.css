@@ -296,10 +296,10 @@ p.date {
     background-color: #fff;
 }
 .searchwrap input {
-    border: 1px solid #ccc;
+    border: 1px solid #eee;
     width: 378px;
     line-height: 26px;
-    border-radius: 2px;
+    border-radius: 5px;
     padding: 6px 10px;
 }
 .searchwrap input:focus{
@@ -434,7 +434,7 @@ p.date {
 
 /* 组件样式6 小卡片的信息用于首页的卡片式超连接，频道超连接 和 个人空间超连接 */
 .orderheadline {
-    margin: 0;
+    margin: 10px 0 0 0;
     padding: 0;
     list-style-type: none;
     width: 750px;

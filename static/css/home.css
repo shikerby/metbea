@@ -216,7 +216,7 @@ main {
 }
 .headline{
     width: 100%;
-    background-color: #fff;
+    border-bottom: 10px solid #f2f2f2;
 }
 
 .c-show-img{
@@ -240,12 +240,16 @@ main {
     width: 150px;
     height: 250px;
 }
-
+.c-list{
+    background-color: #fff;
+}
 .c-list li{
     border-bottom: 2px solid #f2f2f2;
     color: #333;
 }
 .c-list li a{
+    display: inline-block;
+    width: 100%;
     height: 40px;
     font-size: 2.2rem;
     line-height: 40px;
