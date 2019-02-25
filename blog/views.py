@@ -1,6 +1,12 @@
+import markdown
+
+from markdown.extensions.toc import TocExtension
+
+from django.utils.safestring import mark_safe
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
-from taggit.models import Tag
 from django.db.models import Count
+
+from taggit.models import Tag
 
 from .models import Post, Comment
 from .forms import CommentForm
@@ -21,6 +27,14 @@ def post_detail(request, year, month, day, slug):
                                    publish__month=month,
                                    publish__day=day,
                                    status='published')
+    md = markdown.Markdown(extensions=[
+        'markdown.extensions.extra',
+        'markdown.extensions.codehilite',
+        'markdown.extensions.toc',
+    ])
+    post.body = mark_safe(md.convert(post.body))
+    post.toc = mark_safe(md.toc)
+
 
     post_tags_ids = post.tags.values_list('id', flat=True)
     similar_posts = Post.published.filter(tags__in=post_tags_ids).exclude(id=post.id)

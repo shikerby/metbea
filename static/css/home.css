@@ -261,9 +261,22 @@ main {
 
 /* 未来信息通知中心样式 */
 .note {
-    width: 250px;
+    width: 220px;
     height: 800px;
     background-color: #66cc99;
+    color: #fff;
+    padding: 10px;
 }
-
+.note ul{
+    padding-left: 20px;
+}
+.note ul li{
+    color: #fff;
+    width: 100%;
+    list-style-type: none;
+}
+.note ul li:hover{
+    color: #66cc99;
+    background-color: #fff;
+}
 

@@ -1,4 +1,6 @@
 {% extends 'basepost.html' %}
+{% load blog_tags %}
+
 
 {% block title %}
     {{ post.title }}
@@ -19,7 +21,7 @@
             <a href="#">读书</a>
         </div>
         <div class="article-content">
-            {{ post.body|linebreaks }}
+            {{ post.body|markdown }}
         </div>
         <p class='date'>
             Published {{ post.publish }} by {{ post.author }}
@@ -41,7 +43,7 @@
                 <p class='info'>
                     Comment {{ forloop.counter }} by {{ comment.name }} at {{ comment.created }}
                 </p>
-                {{ comment.body|linebreaks }}
+                {{ comment.body|markdown }}
             </div>
             {% empty %}
             <p>There are no comments yet.</p>
@@ -73,7 +75,9 @@
             <p>1</p>
             <p>1</p>
         </div> -->
-        <p>本文目录：</p>
+        <h4>本文目录</h4>
+        {{ post.toc }}
+        <!-- <p>本文目录：</p>
         <ul class="article-dir">
             <li>申辩的背景</li>
             <li>诬蔑由来</li>
@@ -81,7 +85,7 @@
             <li>对于不敬神的申辩</li>
             <li>被判有罪后的申辩</li>
             <li>为哲学而死</li>
-        </ul>
+        </ul> -->
     </aside>
 
 {% endblock content %}
