@@ -45,6 +45,10 @@ def post_detail(request, year, month, day, slug):
                                    publish__month=month,
                                    publish__day=day,
                                    status='published')
+
+    post.pv += 1
+    post.save(update_fields=['pv'])
+
     md = markdown.Markdown(extensions=[
         'markdown.extensions.extra',
         'markdown.extensions.codehilite',

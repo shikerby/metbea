@@ -17,8 +17,7 @@
                     <a href="{% url 'blog:post_list_by_tag' tag.slug %}">{{ tag.name }} </a>
                 {% endfor %}
             {% endwith %}
-            <a href="#">智慧</a>
-            <a href="#">读书</a>
+            <span class="pv">浏览: {{ post.pv }}</span>
         </div>
         <div class="article-content">
             {{ post.body|markdown }}
@@ -77,15 +76,6 @@
         </div> -->
         <h4>本文目录</h4>
         {{ post.toc }}
-        <!-- <p>本文目录：</p>
-        <ul class="article-dir">
-            <li>申辩的背景</li>
-            <li>诬蔑由来</li>
-            <li>对于败坏青年的申辩</li>
-            <li>对于不敬神的申辩</li>
-            <li>被判有罪后的申辩</li>
-            <li>为哲学而死</li>
-        </ul> -->
     </aside>
 
 {% endblock content %}
