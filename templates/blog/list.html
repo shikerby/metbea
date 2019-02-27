@@ -1,4 +1,5 @@
 {% extends 'basepost.html' %}
+{% load blog_tags %}
 
 {% block title %}
     文章标记--{{ tag }}
@@ -11,8 +12,8 @@
                 <a href="{{ post.get_absolute_url }}">
                     <img src="/static/images/ted2.gif" alt="ted">
                     <div class="about">
-                        <span class="card-title">{{ post.title }}</span><br>
-                        <span>{{ post.body|truncatechars:30 }}</span>
+                        <span class="card-title">{{ post.title }}</span><br><br>
+                        <span>{{ post.body|truncatewords_html:8 }}</span>
                     </div>
                 </a>
             </li>

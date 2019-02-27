@@ -8,3 +8,6 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('body',)
         
+
+class SearchForm(forms.Form):
+    query = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '双击 Shift 启用搜索'}))    

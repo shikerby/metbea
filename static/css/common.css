@@ -289,7 +289,7 @@ p.date {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 400px;
+    width: 385px;
     height: 40px;
     margin-top: -20px;
     margin-left: -200px;
@@ -297,7 +297,7 @@ p.date {
 }
 .searchwrap input {
     border: 1px solid #eee;
-    width: 378px;
+    width: 363px;
     line-height: 26px;
     border-radius: 5px;
     padding: 6px 10px;
@@ -306,14 +306,18 @@ p.date {
     border-color: #66cc99;
     box-shadow: 0 0 2px #66cc99;
 }
-.searchwrap a {
-    display: block;
+.searchwrap input[type="submit"] {
     position: absolute;
-    top: 1px;
-    right: 1px;
-    width: 32px;
-    height: 32px;
-    padding: 3px 10px 3px 20px;
+    right: 0;
+    top: 0;
+    width: 60px;
+    height: 40px;
+    line-height: 16px;
+    font-size: 1.4rem;
+    font-weight: 400;
+    background-color: #66cc99;
+    color: #fff;
+    cursor: pointer;
 }
 
 
@@ -469,6 +473,34 @@ p.date {
     padding: 10px;
     height: 100px;
 }
+.result_wrap{
+    /* border-top: 1px solid #fff; */
+    min-height: 500px;
+    background-color: #f2f2f2;
+}
+.ss_hint{
+    height: 40px;
+    line-height: 40px;
+    margin: 0 0 10px 0;
+    background-color: #fff;
+    padding: 0 10px;
+}
+.ss_card{
+    height: 80px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 0 10px;
+}
+.ss_card p {
+    margin: 0;
+}
+.ss_card p a{
+    color: #66cc99;
+    font-size: 1.8rem;
+    line-height: 40px;
+    height: 40px;
+}
+
 .card-title{
     font-size: 1.8rem;
 }

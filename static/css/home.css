@@ -38,33 +38,28 @@ nav > a:hover {
     color: #fff;
 }
 
-
-/* 搜索框父元素 */
-.headmid{
-    position: relative;
-}
 /* 频道导航 */
 .headdown{
     font-size: 0;
-    height: 40px;
+    height: 50px;
 }
 .headdown > a{
     display: inline-block;
     font-size: 1.5rem;
     width: 20%;
-    height: 40px;
+    height: 50px;
     text-align: center;
-    line-height: 40px;
+    line-height: 50px;
     color: #66cc99;
 }
 .headdown > a:hover{
     color: tomato;
-    border-bottom: 3px solid #ff6666;
+    border-bottom: 4px solid #ff6666;
 }
 
 /* 主题内容样式 */
 main {
-    margin-top: 180px;
+    margin-top: 160px;
     height: inherit;
     z-index: 50;
 }

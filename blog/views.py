@@ -5,11 +5,29 @@ from markdown.extensions.toc import TocExtension
 from django.utils.safestring import mark_safe
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from django.db.models import Count
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 
 from taggit.models import Tag
 
 from .models import Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, SearchForm
+
+
+def post_search(request):
+    search_form = SearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        search_form = SearchForm(request.GET)
+        if search_form.is_valid():
+            query = search_form.cleaned_data['query']
+            search_vector = SearchVector('title', 'body')
+            search_query = SearchQuery(query)
+            results = Post.published.annotate(
+                search = search_vector,
+                rank = SearchRank(search_vector, search_query)
+            ).filter(search=search_query).order_by('-rank')[:5]
+    return render(request, 'blog/search.html', {'search_form': search_form, 'results': results, 'query': query})
 
 
 def post_list(request, tag_slug=None):

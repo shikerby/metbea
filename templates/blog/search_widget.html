@@ -1,0 +1,6 @@
+<form action="{% url 'blog:post_search' %}" method="get">
+    {% for field in search_form %}
+        {{ field }}
+    {% endfor %}
+    <input type="submit" value="搜索">
+</form>

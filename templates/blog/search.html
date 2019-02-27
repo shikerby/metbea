@@ -1,0 +1,24 @@
+{% extends 'basepost.html' %}
+{% load blog_tags %}
+
+{% block title %}
+    Search Result
+{% endblock title %}
+
+{% block content %}
+    <div class="result_wrap">
+        <p class="ss_hint">
+            {% with results.count as total_results %}
+                搜索: {{ query }} , 发现 {{ total_results }} 条结果
+            {% endwith %}
+        </p>
+        {% for post in results %}
+            <div class="ss_card">
+                <p><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a></p>
+                <p>{{ post.body|truncatewords_html:8 }}</p>
+            </div>
+        {% empty %}
+            <p>There are no results for your query.</p>
+        {% endfor %}
+    </div>
+{% endblock content %}
