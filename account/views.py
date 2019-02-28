@@ -6,6 +6,8 @@ from django.contrib import messages
 
 from .forms import MyAuthForm, UserRegisterForm, UserEditForm, ProfileEditForm, UserWritePostForm, SetPostPublishTimeForm
 from .models import Profile
+
+from django.contrib.auth.models import User
 from blog.models import Post
 
 @login_required
@@ -48,6 +50,13 @@ def write_post(request):
         write_form = UserWritePostForm()
     return render(request, 'account/writing.html', {'write_form': write_form})
 
+
+@login_required
+def visit_homepage(request, id):
+    blogger = User.objects.get(pk=id)
+    posts = Post.published.filter(author=blogger)
+    the_best_of_posts = posts.order_by('-pv')[:3]
+    return render(request, 'account/hisspace.html', {'blogger': blogger, 'posts': posts, 'the_best_of_posts': the_best_of_posts})
 
 
 def register(request):

@@ -1,4 +1,4 @@
-{% extends 'basepost.html' %}
+{% extends 'base2.html' %}
 {% load blog_tags %}
 
 
@@ -61,7 +61,7 @@
 
     <aside>
         <div class="author-info">
-            <a href="myspace.html">
+            <a href="{% url 'visit_homepage' post.author.id %}">
                 <img src="/static/avatar/avatar.png" alt="avatar">
                 <span>{{ post.author }}</span><br>
                 <span>一切皆有可能，一切皆可编程</span>

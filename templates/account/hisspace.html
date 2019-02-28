@@ -1,0 +1,16 @@
+{% extends 'base2.html' %}
+
+{% block title %}
+    {{ blogger.username }} 的自由空间
+{% endblock title %}
+
+{% block content %}
+    <h1>hello welcome to my space</h1>
+    {% for post in the_best_of_posts %}
+        <p>
+            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+        </p>    
+    {% endfor %}
+    <hr>
+    <hr>
+{% endblock content %}
