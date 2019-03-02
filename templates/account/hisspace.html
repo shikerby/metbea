@@ -1,16 +1,64 @@
 {% extends 'base2.html' %}
+{% load blog_tags %}
 
 {% block title %}
     {{ blogger.username }} 的自由空间
 {% endblock title %}
 
+{% block csslink %}
+    <link rel="stylesheet" href="/static/css/blogger.css">
+{% endblock csslink %}
+
 {% block content %}
-    <h1>hello welcome to my space</h1>
-    {% for post in the_best_of_posts %}
-        <p>
-            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-        </p>    
-    {% endfor %}
-    <hr>
-    <hr>
+    <div class="spacewrapper">
+        <div class="about-blogger">
+            <div class="blogger-info clearfix">
+                <div class="blogger-avatar-area fl">
+                    <img src="/static/avatar/avatar.png" alt="avatar">
+                </div>
+                <div class="blogger-name-summary fl">
+                    <span>{{ blogger.username }}</span><br>
+                    <span>人最可贵的品质是在探寻时间真理的同时,保持对这荒诞世界的幽默. </span>
+                </div>
+                <div class="blogger-follow fr">
+                    <a href="#">关注</a>
+                    <a href="#">发信息</a>
+                </div>
+            </div>
+            <div class="space-nav"></div>
+        </div>
+        <div class="blog-content-box clearfix">
+            <div class="blog-content fl">
+                <section>
+                    <div class="latest-blog-post">
+                            <h2>{{ blogger_latest_post.title }}</h2>
+                            <p>{{ blogger_latest_post.body|markdown|truncatewords_html:5 }}</p>
+                            <p><a href="{{ blogger_latest_post.get_absolute_url }}">继续阅读...</a></p>
+                    </div>
+                </section>
+                <section>
+                    <h3>最佳作品</h3>
+                    <div class="best-of-posts clearfix">
+                        {% for post in the_best_of_posts %}
+                            <p>
+                                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a><br>
+                                <span>pv: {{ post.pv }}</span>
+                            </p>  
+                        {% endfor %}
+                    </div>
+                </section>
+                <section>
+                    <h3>所有文章</h3>
+                    <div class="all-posts">
+                        {% for post in posts %}
+                            <p>
+                                <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                            </p>    
+                        {% endfor %}
+                    </div>
+                </section>
+            </div>
+            <aside class="blogger-notice-other fr"></aside>
+        </div>
+    </div>
 {% endblock content %}

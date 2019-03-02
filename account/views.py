@@ -54,9 +54,14 @@ def write_post(request):
 @login_required
 def visit_homepage(request, id):
     blogger = User.objects.get(pk=id)
-    posts = Post.published.filter(author=blogger)
+    posts = Post.published.filter(author=blogger, status='published')
+    blogger_latest_post = posts[0]
+    print(blogger_latest_post)
     the_best_of_posts = posts.order_by('-pv')[:3]
-    return render(request, 'account/hisspace.html', {'blogger': blogger, 'posts': posts, 'the_best_of_posts': the_best_of_posts})
+    return render(request, 'account/hisspace.html', {'blogger': blogger,
+                                                     'posts': posts,
+                                                     'blogger_latest_post': blogger_latest_post,
+                                                     'the_best_of_posts': the_best_of_posts})
 
 
 def register(request):

@@ -1,0 +1,146 @@
+main{
+    margin-top: 80px;
+}
+
+.spacewrapper {
+    width: inherit;
+    background-color: #f2f2f2;
+}
+
+.about-blogger {
+    position: relative;
+    width: 1200px;
+    height: 260px;
+    /* background-color: aqua; */
+    background-image: url('/static/images/his.jpg');
+    background-size: 1200px 200px;
+    background-repeat: no-repeat;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+    margin-bottom: 10px;
+}
+
+.blogger-info{
+    position: absolute;
+    width: 1200px;
+    height: 100px;
+    top: 100px;
+    color: #66cc99;
+}
+
+.blogger-avatar-area {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+    margin: 10px 20px;
+}
+
+.blogger-avatar-area img {
+    width: 76px;
+    height: 76px;
+    border-radius: 40px;
+    border: 2px solid #66cc99;
+}
+
+.blogger-name-summary {
+    width: 600px;
+    height: 80px;
+    padding: 10px;
+    line-height: 40px;
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+.blogger-follow {
+    padding: 45px 10px 15px;
+    width: 300px;
+    height: 40px;
+}
+
+.blogger-follow a{
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    margin: 0 20px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #66cc99;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0,0,0,.3);
+}
+.blogger-follow a:hover{
+    background-color: aquamarine;
+}
+
+.space-nav {
+    position: absolute;
+    bottom: 0;
+    width: 1200px;
+    height: 60px;
+    border-radius: 2px;
+    background-color: #fff;
+}
+
+.blog-content-box{
+    width: 1200px;
+    min-height: 500px;
+}
+
+.blog-content{
+    width: 890px;
+    min-height: 500px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+
+.latest-blog-post{
+    background-color: #343a40;
+    color: #fff;
+    padding: 10px 20px;
+}
+.latest-blog-post p a {
+    color: #66cc99;
+}
+
+.best-of-posts p{
+    position: relative;
+    margin: 0 10px 0 0;
+    width: 250px;
+    padding: 20px;
+    height: 160px;
+    float: left;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.3);
+}
+.best-of-posts p span{
+    position: absolute;
+    bottom: 0;
+    width: 250px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 1.2rem;
+}
+.best-of-posts p:last-child{
+    margin: 0;
+}
+
+.all-posts{
+    width: 100%;
+    height: 800px;
+    padding: 20px;
+}
+.all-posts p {
+    margin: 5px 0;
+}
+
+.blogger-notice-other {
+    width: 300px;
+    min-height: 300px;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+}
+
+

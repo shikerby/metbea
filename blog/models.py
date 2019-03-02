@@ -19,7 +19,7 @@ class PublishedManager(models.Manager):
 
 
 class Post(models.Model):
-    STATIC_CHOICES = (
+    STATUS_CHOICES = (
         ('draft', 'Draft'),
         ('published', 'Published'),
     )
@@ -30,7 +30,7 @@ class Post(models.Model):
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=10, choices=STATIC_CHOICES, default='published')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='published')
     pv = models.PositiveIntegerField(default=0)
 
     published = PublishedManager()
