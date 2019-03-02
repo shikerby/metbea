@@ -21,6 +21,7 @@ class PublishedManager(models.Manager):
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
+        ('waiting', 'Waiting'),
         ('published', 'Published'),
     )
     author = models.ForeignKey(User,  on_delete=models.CASCADE, related_name='my_posts')
@@ -30,11 +31,11 @@ class Post(models.Model):
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='published')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     pv = models.PositiveIntegerField(default=0)
 
-    published = PublishedManager()
     objects = models.Manager()
+    published = PublishedManager()
     tags = TaggableManager()
 
     class Meta:
