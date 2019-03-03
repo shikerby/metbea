@@ -97,11 +97,16 @@ main{
 
 .latest-blog-post{
     background-color: #343a40;
+    width: 850px;
+    min-height: 180px;
     color: #fff;
     padding: 10px 20px;
 }
 .latest-blog-post p a {
     color: #66cc99;
+}
+.latest-blog-post h3 {
+    color: #fff;
 }
 
 .best-of-posts p{

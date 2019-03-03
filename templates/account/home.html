@@ -36,7 +36,7 @@
                     <div class="logined">
                         <a href="{% url 'edit' %}">Hi: {{ request.user.username }}</a>
                         <div class="dropdown-content">
-                            <a href="{% url 'visit_homepage' request.user.id %}">个人空间</a>
+                            <a href="{% url 'visit_homepage' request.user.id %}">我的空间</a>
                             <a href="{% url 'writing' %}">创作与发布</a>
                             <a href="{% url 'logout' %}">退出</a>
                         </div>

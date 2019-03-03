@@ -31,9 +31,15 @@
             <div class="blog-content fl">
                 <section>
                     <div class="latest-blog-post">
-                            <h2>{{ blogger_latest_post.title }}</h2>
-                            <p>{{ blogger_latest_post.body|markdown|truncatewords_html:5 }}</p>
-                            <p><a href="{{ blogger_latest_post.get_absolute_url }}">继续阅读...</a></p>
+                        {% for p in blogger_latest_post %}
+                            <h2>{{ p.title }}</h2>
+                            <p>{{ p.body|markdown|truncatewords_html:5 }}</p>
+                            <p><a href="{{ p.get_absolute_url }}">继续阅读...</a></p>
+                        {% endfor %}
+                        {% if not blogger_latest_post %}
+                            <h3>还没有写过任何一片文章!!!</h3>
+                            <a class="authoring-publishing" href="{% url 'writing' %}">开写第一篇</a>              
+                        {% endif %}
                     </div>
                 </section>
                 <section>
@@ -50,7 +56,7 @@
                 <section>
                     <h3>所有文章</h3>
                     <div class="all-posts">
-                        {% for post in posts %}
+                        {% for post in all_blogger_posts %}
                             <p>
                                 <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
                             </p>    
@@ -58,7 +64,8 @@
                     </div>
                 </section>
             </div>
-            <aside class="blogger-notice-other fr"></aside>
+            <aside class="blogger-notice-other fr">
+            </aside>
         </div>
     </div>
 {% endblock content %}

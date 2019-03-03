@@ -24,13 +24,16 @@
 * 实现个人页面
 * 实现本站搜索功能
 * 实现对每篇博客的浏览量统计
+* 实现点赞,和关注功能
 
 
 ## django 2.1.5 的未知问题
 * 自定义的模型管理器 published
 * 默认的模型管理器objects
+
 ```python
 published = PublishedManager()
 objects = models.Manager()
 ```
+
 * 如果自定义管理器在模型定义中位于默认管理器之前, 那么管理站点管理模型对象的时候将执行 published 管理器, 而不是 objects
