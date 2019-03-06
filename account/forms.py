@@ -48,10 +48,8 @@ class UserWritePostForm(forms.ModelForm):
     body = forms.CharField(label="", widget=forms.Textarea(attrs={'placeholder': '请在此处写你的文章,可以使用markdown语法'}))
     class Meta:
         model = Post
-        fields = ('title', 'slug', 'status', 'body')
+        fields = ('title', 'slug', 'body')
 
 
-class SetPostPublishTimeForm(forms.ModelForm):
-    class Meta:
-        model = Post
-        fields = ('publish',)
+class SetPostPublishTimeForm(forms.Form):
+    pub_time = forms.DateTimeField(label='', widget=forms.DateTimeInput(attrs={'id': 'datetimepicker', 'placeholder': '点击选择精确发布时间'}))

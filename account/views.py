@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
@@ -45,10 +45,25 @@ def write_post(request):
             new_post = write_form.save(commit=False)
             new_post.author = request.user
             new_post.save()
-            return render(request, 'account/writing_done.html')
+            return HttpResponseRedirect(reverse('set_pubtime', args=(new_post.id,)))
     else:
         write_form = UserWritePostForm()
     return render(request, 'account/writing.html', {'write_form': write_form})
+
+
+@login_required
+def setpubtime(request, id):
+    current_post = Post.objects.get(author=request.user, id=id)
+    if request.method == 'POST':
+        setform = SetPostPublishTimeForm(request.POST)
+        if setform.is_valid():
+            current_post.publish = setform.cleaned_data['pub_time']
+            current_post.status = 'waiting'
+            current_post.save(update_fields=['publish', 'status'])
+        return render(request, 'account/finish_setting.html', {'current_post': current_post})
+    else:
+        setform = SetPostPublishTimeForm()
+    return render(request, 'account/set_pubtime.html', {'current_post': current_post, 'setform': setform})
 
 
 @login_required
@@ -83,9 +98,3 @@ class MyLoginView(LoginView):
     form_class = MyAuthForm
     template_name = 'account/index.html'
     redirect_authenticated_user = 'home'
-
-
-
-
-
-

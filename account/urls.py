@@ -10,5 +10,6 @@ urlpatterns = [
     path('account/register/', views.register, name='register'),
     path('account/edit/', views.edit, name='edit'),
     path('account/writing/', views.write_post, name='writing'),
+    path('account/author/<int:id>/', views.setpubtime, name='set_pubtime'),
     path('space/<int:id>/', views.visit_homepage, name='visit_homepage'),
 ]

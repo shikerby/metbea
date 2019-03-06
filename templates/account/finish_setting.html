@@ -1,0 +1,18 @@
+{% extends 'base2.html' %}
+
+{% block title %}
+    {{ current_post.title }} 设置完成
+{% endblock title %}
+
+{% block csslink %}
+    <link rel="stylesheet" href="/static/css/extra.css">
+{% endblock csslink %}
+
+{% block content %}
+<div class="mcenter">
+    <h2>{{ current_post.title }}</h2>
+    <p>将于 {{ current_post.publish|date:"Y-m-d H:m" }} 发布在首页 </p>
+    <br>
+    <p><a href="{% url 'visit_homepage' current_post.author.id %}">回到我的自由空间</a></p>
+</div>
+{% endblock content %}

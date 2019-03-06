@@ -1,0 +1,40 @@
+{% extends 'base2.html' %}
+
+{% block title %}
+    {{ current_post.title }}设置
+{% endblock title %}
+
+{% block csslink %}
+    <link rel="stylesheet" href="/static/css/extra.css">
+{% endblock csslink %}
+
+{% block content %}
+    <div class="mcenter">
+        <h2>{{ current_post.title }}</h2>
+        <p>写作于: {{ current_post.created|date:"Y年m月d日-H:i" }}</p>
+        {% comment %} <div class="base-rule">
+            <ul>
+                <li>立刻使用下面的表单设置您所写的文章发布到首页的时间,</li>
+                <li>目前文章的发布规则是，您每月有一次自定义发布文章到首页的机会</li>
+                <li>以后再说</li>
+            </ul>
+        </div> {% endcomment %}
+        <form action="." method="post">
+            {{ setform.as_p }}
+            {% csrf_token %}
+            <br>
+            <input type="submit" value="确定发布文章">
+        </form>
+    </div>
+{% endblock content %}
+
+{% block extrajs %}
+    <script src="/static/laydate/laydate.js"></script>
+    <script>
+        laydate.render({
+            elem: "#datetimepicker",
+            show: true,
+            type: "datetime",
+        });
+    </script>
+{% endblock extrajs %}
