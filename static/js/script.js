@@ -1,12 +1,12 @@
 var searchInput = document.querySelector('.searchwrap input');
 
 var twice = 0;
-window.addEventListener('keydown', function(e){
-    if(e.shiftKey){
+document.addEventListener('keyup', function(e){
+    if(e.keyCode == 16){
         twice += 1;
         setTimeout(function(){
             twice = 0;
-        }, 300);
+        }, 500);
         if (twice == 2){
             twice = 0;
             searchInput.focus();
