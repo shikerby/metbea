@@ -41,9 +41,9 @@ def post_list(request, tag_slug=None):
 
 def post_detail(request, year, month, day, slug):
     post = get_object_or_404(Post, slug=slug,
-                                   publish__year=year,
-                                   publish__month=month,
-                                   publish__day=day,
+                                   created__year=year,
+                                   created__month=month,
+                                   created__day=day,
                                    status='published')
 
     post.pv += 1

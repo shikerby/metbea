@@ -2,6 +2,7 @@ var searchInput = document.querySelector('.searchwrap input');
 
 var twice = 0;
 document.addEventListener('keyup', function(e){
+    console.log(e.keyCode);
     if(e.keyCode == 16){
         twice += 1;
         setTimeout(function(){

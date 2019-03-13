@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'blog.apps.BlogConfig',
     'taggit',
+    'django_celery_beat',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,12 @@ LOGOUT_REDIRECT_URL = 'login'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/1'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = TIME_ZONE
+
+CELERYBEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
