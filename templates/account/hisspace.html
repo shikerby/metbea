@@ -25,7 +25,13 @@
                     <a href="#">发信息</a>
                 </div>
             </div>
-            <div class="space-nav"></div>
+            <div class="space-nav">
+                
+                {% if request.user == blogger %}
+                    <span>我的资产： {{ blogger.profile.virtual_asset }}</span>
+                {% endif %}
+                    
+            </div>
         </div>
         <div class="blog-content-box clearfix">
             <div class="blog-content fl">
