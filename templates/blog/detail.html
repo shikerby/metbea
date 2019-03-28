@@ -22,9 +22,17 @@
         <div class="article-content">
             {{ post.body|markdown }}
         </div>
+        <br>
         <p class='date'>
             Published {{ post.publish }} by {{ post.author }}
         </p>
+
+        {% with total_like=post.users_like.count users_like=post.users_like.all %}
+        <p class="like-or-unlike">
+            <a href="#" data-id="{{ post.id }}" data-action="{% if request.user in users_like %}un{% endif %}like" class="like"></a>
+            <span class="likecount">{{ total_like }}</span>
+        </p>
+        {% endwith %}
         <hr>
         <h3>相关文章</h3>
         {% for post in similar_posts %}
@@ -67,15 +75,43 @@
                 <span>一切皆有可能，一切皆可编程</span>
             </a>
         </div>
-        <!-- <p>视频选集：</p>
-        <div class="album-nav">
-            <p></p>
-            <p>1</p>
-            <p>1</p>
-            <p>1</p>
-        </div> -->
         <h4>本文目录</h4>
         {{ post.toc }}
     </aside>
 
 {% endblock content %}
+
+
+{% block extrajs %}
+<script>
+    let alike = document.querySelector(".like-or-unlike .like");
+    let alikeCount = document.querySelector(".like-or-unlike .likecount");
+        
+    alike.addEventListener('click', function(e){
+        e.preventDefault();
+        myajax({
+            method: 'POST',
+            url: '{% url "blog:like" %}',
+            csrftoken: getCookie('csrftoken'),
+            data: {
+                id: alike.getAttribute('data-id'),
+                action: alike.getAttribute('data-action'),
+            },
+            success: function(data){
+                data = JSON.parse(data);
+                
+                let counts = parseInt(alikeCount.textContent);
+                let cur_action = alike.getAttribute('data-action');
+
+                if (data['status'] === 'ok'){
+                    alike.setAttribute('data-action', cur_action=='like' ? 'unlike' : 'like');
+                    alikeCount.textContent = cur_action === 'like' ? counts + 1 : counts - 1;
+                    alike.style.backgroundImage = cur_action === 'like' ? "url('/static/icons/unlike24.png')" : "url('/static/icons/like24.png')";
+                }
+            }
+        });
+    });
+
+</script>
+{% endblock extrajs %}
+    

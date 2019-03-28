@@ -7,6 +7,7 @@ from django.utils.timezone import utc
 from django.contrib.auth.models import User
 from django.shortcuts import reverse
 from taggit.managers import TaggableManager
+from django.conf import settings
 
 
 now = datetime.datetime.utcnow().replace(tzinfo=utc)
@@ -33,6 +34,8 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     pv = models.PositiveIntegerField(default=0)
+
+    users_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='posts_like', blank=True)
 
     objects = models.Manager()
     published = PublishedManager()

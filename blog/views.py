@@ -6,11 +6,34 @@ from django.utils.safestring import mark_safe
 from django.shortcuts import render, get_object_or_404, redirect, HttpResponseRedirect
 from django.db.models import Count
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth.decorators import login_required
 
 from taggit.models import Tag
 
 from .models import Post, Comment
 from .forms import CommentForm, SearchForm
+
+@csrf_protect
+@login_required
+@require_POST
+def post_like(request):
+    post_id = request.POST.get('id')
+    action = request.POST.get('action')
+    if post_id and action:
+        try:
+            post = Post.published.get(id=post_id)
+            if action == 'like':
+                post.users_like.add(request.user)
+            else:
+                post.users_like.remove(request.user)
+            return JsonResponse({'status': 'ok'})
+        except:
+            pass
+    else:
+        return JsonResponse({'status', 'ko'})
 
 
 def post_search(request):
